@@ -1,0 +1,7 @@
+---
+- name: Sync MOTD files to host /etc/update-motd.d/
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/update-motd.d/{{ item | basename }}"
+    mode: 0755
+  with_fileglob: "{{ Role_MOTD_cfg_dir }}/*"
